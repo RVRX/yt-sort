@@ -30,7 +30,6 @@ function parseViewCount(ytviews) {
 	let isDot = false;
 
 	if (ytviews.includes('K')) {
-		// ytviews = ytviews.slice(0, -1); //cut off the tailing K
 		if (!ytviews.includes('.')) {
 			return (ytviews.slice(0, -1) * 1000);
 		} else {
@@ -42,25 +41,21 @@ function parseViewCount(ytviews) {
 			//parse after dot
 			views += ytviews.charAt(dotIndex + 1) * 100;
 		}
-
-		// for (var i = 0; i < ytviews.length; i++) { //for each character
-		// 	if (ytviews[i] == '.') {
-		// 		isDot = true;
-		// 	} else {
-		// 		if (isDot) {
-		// 			//previous char was '.', so number is hundreds place. There are no more numbers, so return now.
-		// 			return views + (ytviews[i] * 100);
-
-		// 		} else {
-		// 			//normal case, number is thousands place
-		// 			let place = (ytviews.length - i);
-
-		// 			views += (ytviews[i] * 1000);
-		// 		}
-		// 	}
-		// }
 		return views;
 	} else if (ytviews.includes('M')) {
-		//millions
+		if (!ytviews.includes('.')) {
+			return (ytviews.slice(0, -1) * 1000000);
+		} else {
+			//get dot index
+			let dotIndex = ytviews.indexOf('.');
+
+			//parse before dot
+			views += (ytviews.slice(0, dotIndex)) * 1000000;
+			//parse after dot
+			views += ytviews.charAt(dotIndex + 1) * 100000;
+		}
+		return views;
+	} else {
+		return ytviews;
 	}
 }
