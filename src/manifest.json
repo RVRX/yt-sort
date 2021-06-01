@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "yt-sort",
+  "version": "0.0.1",
+
+  "description": "Sort YT subscription feed by views.",
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/feed/subscriptions"],
+      "js": ["main.js"]
+    }
+  ]
+}
