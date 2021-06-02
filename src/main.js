@@ -57,7 +57,7 @@ function getViewCountText(video) {
 }
 
 /**
- * Gets all view counts
+ * Gets all view counts for a list of videos
  * @param listOfVideos
  * @returns {*[]}
  */
@@ -68,6 +68,16 @@ function getViewCounts(listOfVideos) {
 		console.debug(arrayOfVideoViewCounts[i]);
 	}
 	return arrayOfVideoViewCounts;
+}
+
+/**
+ * Video object. Contains an HTML node and a view count.
+ * @param node the HTML node/element of the video (a flex item).
+ * @constructor
+ */
+function Video(node) {
+	this.node = node;
+	this.views = parseViewCount(getViewCountText(node));
 }
 
 console.debug("End of Executable code");
