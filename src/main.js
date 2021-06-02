@@ -10,8 +10,8 @@ function parseViewCount(ytviews) {
 	ytviews = ytviews.slice(0, -6); 
 
 	let views = 0; //final value to return
-	let isDot = false;
 
+	//if #K
 	if (ytviews.includes('K')) {
 		if (!ytviews.includes('.')) {
 			return (ytviews.slice(0, -1) * 1000);
@@ -25,6 +25,8 @@ function parseViewCount(ytviews) {
 			views += ytviews.charAt(dotIndex + 1) * 100;
 		}
 		return views;
+
+	//if #M
 	} else if (ytviews.includes('M')) {
 		if (!ytviews.includes('.')) {
 			return (ytviews.slice(0, -1) * 1000000);
@@ -38,6 +40,8 @@ function parseViewCount(ytviews) {
 			views += ytviews.charAt(dotIndex + 1) * 100000;
 		}
 		return views;
+
+	//if #
 	} else {
 		return parseInt(ytviews);
 	}
