@@ -109,7 +109,7 @@ for (let i = 0; i < todaysVideos.length; i++) {
 	arrayOfVideoObjects[i] = new Video(todaysVideos[i]);
 }
 
-arrayOfVideoObjects.sort(sortByViewsHTL);
+arrayOfVideoObjects.sort(viewsHighToLowSorter);
 
 
 console.debug("End of Executable code");
