@@ -1,3 +1,5 @@
+console.log("Starting Extension");
+
 /**
 parse views to actual number.
 Ex: 1.3K views -> 1300
@@ -40,3 +42,28 @@ function parseViewCount(ytviews) {
 		return ytviews;
 	}
 }
+
+/**
+ * Gets the view text for a specific video
+ * Can be parsed by {@link parseViewCount}.
+ * @param video
+ */
+function getViewCountText(video) {
+	return video.querySelector("div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) > span:nth-child(1)").textContent;
+}
+
+/**
+ * Gets all view counts
+ * @param listOfVideos
+ * @returns {*[]}
+ */
+function getViewCounts(listOfVideos) {
+	let arrayOfVideoViewCounts = [];
+	for (let i = 0; i < listOfVideos.length; i++) {
+		arrayOfVideoViewCounts[i] = parseViewCount(getViewCountText(listOfVideos.item(i))); //todo refactor out a getViewCount fcn.
+		console.debug(arrayOfVideoViewCounts[i]);
+	}
+	return arrayOfVideoViewCounts;
+}
+
+console.debug("End of Executable code");
