@@ -80,4 +80,18 @@ function Video(node) {
 	this.views = parseViewCount(getViewCountText(node));
 }
 
+
+/*Executing code...*/
+console.debug("Start of Executable code");
+
+let todaysVideos = document.querySelector("ytd-item-section-renderer.style-scope:nth-child(1)").querySelectorAll("ytd-grid-video-renderer");
+
+let arrayOfVideoObjects = [];
+
+//propagate array with video objects
+for (let i = 0; i < todaysVideos.length; i++) {
+	arrayOfVideoObjects[i] = new Video(todaysVideos[i]);
+}
+
+
 console.debug("End of Executable code");
