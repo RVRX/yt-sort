@@ -112,4 +112,11 @@ for (let i = 0; i < todaysVideos.length; i++) {
 arrayOfVideoObjects.sort(viewsHighToLowSorter);
 
 
+//display videos in new order
+let todaysContainer = document.querySelector("ytd-item-section-renderer.style-scope:nth-child(1) > div:nth-child(3) > ytd-shelf-renderer:nth-child(1) > div:nth-child(1) > div:nth-child(2) > ytd-grid-renderer:nth-child(1) > div:nth-child(2)");
+
+for (let i = 0; i < arrayOfVideoObjects.length; i++) {
+	todaysContainer.appendChild(arrayOfVideoObjects[i].node);
+}
+
 console.debug("End of Executable code");
