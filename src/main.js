@@ -39,7 +39,7 @@ function parseViewCount(ytviews) {
 		}
 		return views;
 	} else {
-		return ytviews;
+		return parseInt(ytviews);
 	}
 }
 
