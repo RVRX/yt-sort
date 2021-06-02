@@ -7,7 +7,7 @@ Ex: 1.3K views -> 1300
 */
 function parseViewCount(ytviews) {
 	//remove ending (1.3k views -> 1.3k)
-	ytviews = ytviews.slice(0, -6); 
+	ytviews = ytviews.slice(0, -6);
 
 	let views = 0; //final value to return
 
@@ -80,6 +80,22 @@ function Video(node) {
 	this.views = parseViewCount(getViewCountText(node));
 }
 
+/**
+ * Sorts a {@link Video} from highest to lowest views.
+ * To be used by `compareFunction` parameter of built-in {@link Array.prototype.sort()} method.
+ */
+function viewsHighToLowSorter(a, b) {
+	return a.views < b.views;
+}
+
+/**
+ * Sorts a {@link Video} from lowest to highest views.
+ * To be used by `compareFunction` parameter of built-in {@link Array.prototype.sort()} method.
+ */
+function viewsLowToHighSorter(a, b) {
+	return a.views > b.views;
+}
+
 
 /*Executing code...*/
 console.debug("Start of Executable code");
@@ -92,6 +108,8 @@ let arrayOfVideoObjects = [];
 for (let i = 0; i < todaysVideos.length; i++) {
 	arrayOfVideoObjects[i] = new Video(todaysVideos[i]);
 }
+
+arrayOfVideoObjects.sort(sortByViewsHTL);
 
 
 console.debug("End of Executable code");
